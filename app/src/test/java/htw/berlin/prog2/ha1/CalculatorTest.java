@@ -106,5 +106,25 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display result after multiplying one positiv and one negativ number")
+    void testNegativMultiplycation() {
+        Calculator calc = new Calculator();
+
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(7);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "-21";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+
 }
 
