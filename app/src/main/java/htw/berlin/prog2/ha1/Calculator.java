@@ -43,11 +43,22 @@ public class Calculator {
      * Wird daraufhin noch einmal die Taste gedrückt, dann werden auch zwischengespeicherte
      * Werte sowie der aktuelle Operationsmodus zurückgesetzt, so dass der Rechner wieder
      * im Ursprungszustand ist.
+     *
+     * @param "pressedCOnce" gibt an ob "C" einmal gedrückt worden ist oder nicht.
      */
+    boolean pressedCOnce = false;
+
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+
+        if (!pressedCOnce) {
+            screen = "0";
+            pressedCOnce = true;
+        } else {
+            screen = "0";
+            latestOperation = "";
+            latestValue = 0.0;
+            pressedCOnce = true;
+        }
     }
 
     /**
