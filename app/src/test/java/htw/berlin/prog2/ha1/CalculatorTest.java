@@ -107,6 +107,9 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    /*
+    Hab gemerkt das man den Test eig mit calc.pressNegativKey(); schreiben müsste um die 7 negativ zu machen
+
     @Test
     @DisplayName("should display result after multiplying one positiv and one negativ number")
     void testNegativMultiplycation() {
@@ -123,6 +126,7 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    */
 
     @Test
     @DisplayName("clears last value without complety returning to initial state")
@@ -142,5 +146,21 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should add latest value to the operation if equal key get pressed multipl times")
+    void testPressOperationKeyMultipleTimes() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(7);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+        calc.pressEqualsKey();
+
+        String expected = "13";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
