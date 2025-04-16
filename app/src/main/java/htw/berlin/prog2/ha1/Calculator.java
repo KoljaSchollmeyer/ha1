@@ -46,13 +46,13 @@ public class Calculator {
      *
      * @param "pressedCOnce" gibt an ob "C" einmal gedrückt worden ist oder nicht.
      */
-    boolean pressedCOnce = false;
+    boolean pressedCOnce = true;
 
     public void pressClearKey() {
 
-        if (!pressedCOnce) {
+        if (pressedCOnce) {
             screen = "0";
-            pressedCOnce = true;
+            pressedCOnce = false;
         } else {
             screen = "0";
             latestOperation = "";
@@ -132,13 +132,13 @@ public class Calculator {
      * @param secondValue speichert die letzte Summe der Operation
      */
 
-    boolean pressedEqualsOnce = false;
+    boolean pressedEqualsOnce = true;
     double firstValue = 0;
     double secondValue = 0;
 
     public void pressEqualsKey() {
     try {
-        if (!pressedEqualsOnce) {
+        if (pressedEqualsOnce) {
 
             secondValue = Double.parseDouble(screen);
             var result = switch (latestOperation) {
@@ -153,7 +153,7 @@ public class Calculator {
             if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
             if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
-            pressedEqualsOnce = true;
+            pressedEqualsOnce = false;
             firstValue = Double.parseDouble(screen);
         } else {
             var result = switch (latestOperation) {
